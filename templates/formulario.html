@@ -1,0 +1,9 @@
+{% extends "index.html" %}
+{% block content %}
+<form method="POST" action="{{ url_for('prices') }}">
+    <label>Partida: </label><input type="text" name="start"><br/>
+    <label>Destino: </label><input type="text" name="end">
+    <button type="submit">Verificar preço</button>
+
+</form>
+{% endblock %}

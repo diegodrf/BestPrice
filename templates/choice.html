@@ -1,0 +1,18 @@
+{% extends "index.html" %}
+{% block content %}
+<form method="POST" action="{{ url_for('prices') }}">
+    Partida: <br/>
+    {% for local in start %}
+        <input type="radio" name="start" value="{{ local.Latitude }},{{ local.Longitude }}">Endereço: {{ local.Endereço }}<br/>
+    {% endfor %}
+    <br/>
+    <br/>
+
+    Destino: <br/>
+    {% for local in end %}
+        <input type="radio" name="end" value="{{ local.Latitude }},{{ local.Longitude }}">Endereço: {{ local.Endereço }}<br/>
+    {% endfor %}
+
+    <button type="submit">Enviar</button>
+</form>
+{% endblock %}

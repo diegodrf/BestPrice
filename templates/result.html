@@ -1,0 +1,32 @@
+{% extends "index.html" %}
+{% block content %}
+Partida: <br/>
+{% for local in start %}
+     Endereço: {{ local.Endereço }}<br/>
+{% endfor %}
+<br/>
+<br/>
+
+Destino: <br/>
+{% for local in end %}
+    Endereço: {{ local.Endereço }}<br/>
+{% endfor %}
+<br/>
+<br/>
+
+{% for i in prices %}
+  Produto: {{ i.display_name }}<br/>
+  Distancia: {{ i.distance }} Km<br/>
+  Duração: {{ i.duration|timeConverter }}<br/>
+  Preço mínimo: R$ {{ i.low_estimate }}<br/>
+  Preço Máximo: R$ {{ i.high_estimate }}<br/>
+  <br/>
+{% endfor %}
+
+{% for s in start %}
+    {% for e in end %}
+        <iframe width="1200" height="600" frameborder="1" style="border:1" src="https://wego.here.com/directions/mix/{{ s.Endereço }}/{{ e.Endereço }}?avoid=carHOV" allowfullscreen></iframe>
+    {% endfor %}
+{% endfor %}
+{% endblock %}
+
